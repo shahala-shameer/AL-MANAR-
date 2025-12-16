@@ -1,0 +1,349 @@
+/* Ensure Tailwind CSS is properly configured */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-in {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 1s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+html.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+html.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@keyframes whatsappPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.whatsapp-pulse {
+  animation: whatsappPulse 1.8s infinite;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+html, body {
+  scroll-behavior: smooth;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+} 
+.hero-slider {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-slide-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.hero-slide-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s forwards;
+}
+/* Animated Gradient Background */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(270deg, #4f46e5, #3b82f6, #06b6d4, #10b981);
+  background-size: 800% 800%;
+  animation: gradient-move 15s ease infinite;
+}
+/* Add this to your global CSS (globals.css or tailwind.config.css) */
+.transition-colors-bg {
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.transition-shadow {
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+.transition-opacity {
+  transition: opacity 0.5s ease-in-out;
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+.animate-pulse-active {
+  animation: pulseActive 2s infinite;
+}
+@keyframes gradientPulse {
+  0%, 100% {
+    background: linear-gradient(135deg, #41403d, #484642);
+    box-shadow: 0 0 15px rgba(37, 37, 36, 0.5);
+  }
+  50% {
+    background: linear-gradient(135deg, #63615a, #7d7b78);
+    box-shadow: 0 0 25px rgba(42, 40, 38, 0.9);
+  }
+}
+
+.animate-gradient-pulse {
+  animation: gradientPulse 2s infinite;
+}
+
+@keyframes hoverGlow {
+  0%, 100% { box-shadow: 0 10px 20px rgba(250, 204, 21, 0.4); }
+  50% { box-shadow: 0 10px 25px rgba(90, 88, 84, 0.6); }
+}
+.hover-glow {
+  animation: hoverGlow 1.5s infinite;
+}
+
+/* ---------- GLOBAL STYLES ---------- */
+
+/* ---------- GOLDEN PULSE (Dark Mode) ---------- */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #facc15, 0 0 20px #fbbf24, 0 0 30px #eab308;
+  }
+  50% {
+    box-shadow: 0 0 20px #eab308, 0 0 30px #facc15, 0 0 40px #ca8a04;
+  }
+}
+.animate-gold-pulse {
+  animation: goldPulse 2s infinite;
+}
+.card-hover-gold:hover {
+  animation: goldPulse 2s infinite;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+/* ---------- BLUE PULSE (Light Mode) ---------- */
+@keyframes bluePulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #60a5fa, 0 0 20px #3b82f6, 0 0 30px #2563eb;
+  }
+  50% {
+    box-shadow: 0 0 20px #3b82f6, 0 0 30px #60a5fa, 0 0 40px #1d4ed8;
+  }
+}
+.animate-blue-pulse {
+  animation: bluePulse 2s infinite;
+}
+.card-hover-blue:hover {
+  animation: bluePulse 2s infinite;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+/* ---------- GENERAL STYLES ---------- */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+.dark body {
+  --background: #111827;
+  --text-color: #f9fafb;
+}
+
+.light body {
+  --background: #f9fafb;
+  --text-color: #111827;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+/* ---------- CARD STYLING ---------- */
+.branch-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.branch-card:hover {
+  transform: scale(1.03);
+}
+
+/* ---------- BRANCH BUTTONS ---------- */
+.branch-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.branch-btn.active.light {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  color: black;
+  border: 2px solid #3b82f6;
+}
+.branch-btn.active.dark {
+  background: linear-gradient(90deg, #facc15, #eab308);
+  color: black;
+  border: 2px solid #fbbf24;
+}
+/* ---------- BACK TO TOP BUTTON ---------- */
+.back-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+/* Light mode: gradient blue */
+body.light .back-top-btn {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  color: white;
+}
+
+body.light .back-top-btn:hover {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+}
+
+/* Dark mode: golden */
+body.dark .back-top-btn {
+  background-color: #facc15;
+  color: black;
+}
+
+body.dark .back-top-btn:hover {
+  background-color: #fbbf24;
+}
+/* Hide horizontal scrollbar for all elements with overflow-x-auto */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Marquee infinite scroll */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  min-width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* Optional: hide horizontal scrollbar */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Animated gradient for background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated {
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+}
+/* Floating effect for logos */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
