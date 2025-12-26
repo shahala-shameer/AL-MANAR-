@@ -7,11 +7,13 @@ import cors from "cors";
 import http from "http";
 import { Server } from "socket.io";
 
+// Import Routes
+import messageRoutes from "./routes/messages.js";
 import videosRoutes from "./routes/videos.js";
 
 const app = express();
 
-// Create HTTP server wrapper (IMPORTANT for Socket.IO)
+// Create HTTP server (required for Socket.IO)
 const server = http.createServer(app);
 
 // Socket.IO setup
@@ -27,12 +29,13 @@ app.use(express.json());
 
 // Routes
 app.use("/videos", videosRoutes);
+app.use("/messages", messageRoutes);
 
 // MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log("MongoDB connection error:", err));
 
 // Socket.IO events
 io.on("connection", (socket) => {
