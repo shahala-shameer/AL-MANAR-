@@ -121,8 +121,25 @@ const BranchCard = ({ branch, activeBranch }) => {
         </p>
 
         <p className="flex items-center gap-2">
-          <Phone size={18} /> {branch.mobile} | ☎️ {branch.landline}
-        </p>
+  <Phone size={18} />
+
+  <a
+    href={`tel:${branch.mobile}`}
+    className="text-white hover:text-yellow-600"
+  >
+    {branch.mobile}
+  </a>
+
+  <span>| ☎️</span>
+
+  <a
+    href={`tel:${branch.landline}`}
+    className="text-white hover:text-yellow-600"
+  >
+    {branch.landline}
+  </a>
+</p>
+
 
         <a
           href={`https://wa.me/${branch.whatsapp}`}

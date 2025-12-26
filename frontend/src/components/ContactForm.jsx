@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
-import SocialIcons from "./SocialIcons"; // make sure this path is correct
+import SocialIcons from "./SocialIcons";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -17,13 +17,24 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(messages.contact.sending || "Sending...");
+
     try {
-      // Simulate sending delay
-      setTimeout(() => {
-        setStatus(messages.contact.success);
+      const response = await fetch("http://localhost:5000/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus(messages.contact.success || "Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
-      }, 1200);
+      } else {
+        setStatus(messages.contact.error || "Failed to send message.");
+      }
     } catch (error) {
+      console.error(error);
       setStatus(messages.contact.error || "Failed to send message.");
     }
   };
@@ -34,11 +45,6 @@ export default function Contact() {
       dir={lang === "ar" ? "rtl" : "ltr"}
       className="relative py-20 px-6 md:px-16 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 overflow-hidden"
     >
-      {/* Decorative Background Circles */}
-      <div className="absolute -top-16 -left-16 w-72 h-72 bg-blue-300 rounded-full opacity-30 animate-pulse dark:bg-yellow-400"></div>
-      <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-400 rounded-full opacity-20 animate-ping dark:bg-yellow-500"></div>
-
-      {/* Section Title */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +54,6 @@ export default function Contact() {
         {messages.contact.title}
       </motion.h2>
 
-      {/* Contact Form */}
       <motion.form
         onSubmit={handleSubmit}
         initial={{ opacity: 0, y: 20 }}
@@ -89,12 +94,10 @@ export default function Contact() {
         >
           {messages.contact.submit}
         </button>
-        {status && (
-          <p className="mt-2 text-center text-green-500 font-medium">{status}</p>
-        )}
+
+        {status && <p className="mt-2 text-center text-green-500 font-medium">{status}</p>}
       </motion.form>
 
-      {/* Floating Social Icons */}
       <SocialIcons className="absolute right-8 top-1/3 hidden md:flex flex-col gap-4 z-20" />
     </section>
   );
